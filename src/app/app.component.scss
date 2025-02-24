@@ -1,0 +1,33 @@
+main {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 8px;
+}
+
+h4 {
+    margin: 0;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+
+    th {
+        text-align: left;
+    }
+    
+    th, td {
+        padding: 4px 8px;
+    }
+    
+    tbody tr:nth-child(odd) {
+        background-color: #eeeeee;
+    }
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}

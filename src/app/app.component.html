@@ -1,0 +1,43 @@
+<main>
+  <app-card>
+    <h4 appCardTitle>
+      Content Projection
+    </h4>
+    <div class="field">
+      <label>Two-Way Binding</label>
+      <input [(ngModel)]="twoWay" />
+    </div>
+    <p *ngIf="twoWay != null">{{ twoWay }}</p>
+  </app-card>
+  <app-card>
+    <h4 appCardTitle>
+      RxJS
+    </h4>
+    <ng-container *ngTemplateOutlet="animalTable; context: { rows: data }"></ng-container>
+  </app-card>
+</main>
+
+<ng-template #animalTable let-rows="rows">
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Species</th>
+        <th>Latest Price</th>
+        <th>Lowest Price</th>
+        <th>Highest Price</th>
+        <th>Last Purchase</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of rows">
+        <td>{{ row.name }}</td>
+        <td>{{ row.species }}</td>
+        <td>{{ row.priceLatest | currency }}</td>
+        <td>{{ row.priceMin | currency }}</td>
+        <td>{{ row.priceMax | currency }}</td>
+        <td [title]="row.lastPurchaseDate | date: 'shortDate'">{{ row.lastPurchaseDate | relativeTime }}</td>
+      </tr>
+    </tbody>
+  </table>
+</ng-template>
